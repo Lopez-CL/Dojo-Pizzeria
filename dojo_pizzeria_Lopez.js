@@ -25,27 +25,24 @@ var sauceType = ["traditional", "marinara", "spicy", "alfredo"];
 var cheese = ["mozzarella", "mozzarella", "feta", "vegan cheese", "pepper jack", "blue cheese", "4 chesses"];
 var toppings = ["pepperoni", "sausage", "mushrooms", "olives", "onions", "saussage", "pepper", "banna peppers", "pinapple", "bacon", "ham"];
 
-function getRandom(min, max) {
+function randomNums(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function randomPick(arr) {
+function randomItem(arr){
     var i = Math.floor(arr.length * Math.random());
     return arr[i];
 }
 
-function pizzaRando() {
-    var wildPizza = {};
-    wildPizza.crustType = randomPick(crustType);
-    wildPizza.sauceType = randomPick(sauceType);
-    wildPizza.cheeses = [];
-    wildPizza.toppings = [];
-    for (var i = 0; i < getRandom(1, 4); i++){
-        wildPizza.cheeses.push(randomPick(cheese));
+function randomPizza(){
+    var pizzaR = {}
+    pizzaR.crustType = randomItem(crustType);
+    pizzaR.sauceType = randomItem(sauceType);
+    pizzaR.cheese = randomItem(cheese);
+    pizzaR.toppings = []
+    for (var i = 0; i < randomNums(1, 4); i++){
+        pizzaR.toppings.push(randomItem(toppings));
     }
-    for (var i = 0; i < getRandom(1, 4); i++){
-        wildPizza.toppings.push(randomPick(toppings));
-    }
-    return wildPizza;
+    return pizzaR;
 }
-var pizzaW = pizzaRando();
-console.log("For my pizza I would like ", pizzaW);
+
+console.log(randomPizza());
